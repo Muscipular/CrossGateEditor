@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="cg.editor.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="cg.editor.Perspective"
+            id="CrossGateEditor.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="View"
+            class="cg.editor.View"
+            id="CrossGateEditor.view">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <view
+               standalone="true"
+               minimized="false"
+               relative="org.eclipse.ui.editorss"
+               relationship="left"
+               id="CrossGateEditor.view">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="File">
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="cg.editor.map.MapEditor"
+            contributorClass="cg.editor.extend.DefaultDataObjectEditorActionBarContributor"
+            icon="icons/dataobj.gif"
+            id="cg.editor.map.MapEditor"
+            name="地图">
+      </editor>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="cg.editor.image.ImageEditor"
+            contributorClass="cg.editor.extend.DefaultDataObjectEditorActionBarContributor"
+            icon="icons/dataobj.gif"
+            id="cg.editor.image.ImageEditor"
+            name="图片">
+      </editor>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="CrossGateEditor.application"
+            name="CrossGateEditor">
+         <property
+               name="appName"
+               value="CrossGateEditor">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
